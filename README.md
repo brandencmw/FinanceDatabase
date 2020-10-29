@@ -17,11 +17,15 @@
 
 ## Technology and Frameworks Used
 ##### Built with
-*Python
-*mySQL
+* Python
+* mySQL
 
 ##### Packages
-*Tkinter: Used to make the GUI
-*Selenium: Used to automate browser functions
-*BeautifulSoup4: Used to parse site's html and extract necessary data
-*mySQL connector: Used to query the SQL database
+* Tkinter 
+	* Used to make the GUI
+* Selenium
+	* Used to automate browser functions
+* BeautifulSoup4
+	* Used to parse site's html and extract necessary data
+* mySQL connector
+	* Used to query the SQL database
