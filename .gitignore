@@ -1,0 +1,5 @@
+.project
+.pydevproject
+/resources
+\__pycache__
+credentials.txt
