@@ -10,10 +10,10 @@
 
 ## Build Status
 >This project is currently a work-in-progress. I'm adding to it as often as I
->can until I have full desired functionality. Still needing to be added at this
->point is the ability to view entries in the database after adding the tables.
->Past that, I'm planning on adding functionality to export to Excel and other
->file formats as well as graphing capabilities.
+>can until I have full desired functionality. I recently added the ability to
+>to view the tables in the database as well as a button to export tables to Excel.
+>Past that, I'm planning to add graphing features to visually represent the data in
+>the tables
 
 ## Technology and Frameworks Used
 ##### Built with
