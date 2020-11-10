@@ -36,12 +36,13 @@ class DB:
         result = dbcur.fetchone()
         dbcur.close()
         return result
-    
-    def createTable(self, name, adder):
+        
+    def createTable(self, name):
         
         dbcur = self.db.cursor()
         dbcur.execute("CREATE TABLE " + name + """
-        (row_title VARCHAR(100) PRIMARY KEY,
+        (row_id INT AUTO_INCREMENT PRIMARY KEY,
+        row_title VARCHAR(100),
         year_one VARCHAR(100),
         year_two VARCHAR(100),
         year_three VARCHAR(100),
@@ -52,8 +53,6 @@ class DB:
     def addRow(self, name, row_title, year1, year2, year3, doc_type):
         
         dbcur = self.db.cursor()
-        #query = "insert into " + name + " (row_title, year_one, year_two, year_three, doc_type) VALUES('Heading', '2019', '2018', '2017', 'Income')"
-        #print(query)   
         record = (row_title, year1, year2, year3, doc_type)           
         dbcur.execute("INSERT INTO " + name + " (row_title, year_one, year_two, year_three, doc_type) VALUES (%s, %s, %s, %s, %s)", record)
         
@@ -85,6 +84,17 @@ class DB:
         tables = dbcur.fetchall()
         dbcur.close()
         return tables
+    
+    def get_by_doc_type(self, name, thing):
+        
+        dbcur = self.db.cursor()
+        dbcur.execute("SELECT row_title, year_one, year_two, year_three FROM " + name + " WHERE doc_type = '" + thing + "'")
+        items = dbcur.fetchall()
+        
+        dbcur.close()
+        
+        return items
+        
         
         
         
