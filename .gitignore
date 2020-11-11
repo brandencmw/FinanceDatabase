@@ -2,5 +2,5 @@
 .pydevproject
 /resources
 \__pycache__
-credentials.txt
+/credentials
 /ExportedFiles

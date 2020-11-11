@@ -14,7 +14,7 @@ class DB:
     
     def __init__(self):
         
-        file = open('credentials.txt', 'r')
+        file = open('credentials/credentials.txt', 'r')
         host_line = file.readline().strip()[5:]
         user_line = file.readline().strip()[5:]
         password_line = file.readline().strip()[9:]

@@ -106,7 +106,7 @@ class AddScreen(Frame):
         Frame.__init__(self, parent)
         self.configure(bg="white")
         
-        title = Label(self, text="Add Company", font=TITLE_FONT, fg="green", bg="white")
+        title = Label(self, text="Add Company", font=TITLE_FONT, bg="white")
         title.place(x=600, y=50, anchor="center")
             
         description = Label(self, text="Enter the stock symbol of the company to be added", bg="white")
@@ -115,10 +115,10 @@ class AddScreen(Frame):
         e = Entry(self, font=TITLE_FONT, highlightcolor="blue", highlightthickness=2)
         e.place(x=355, y=130, width=400, height=50)
         
-        enter_button = Button(self, text="Add", font=TITLE_FONT, command=lambda: self.add_company(e.get().lower()))
+        enter_button = Button(self, text="Add", command=lambda: self.add_company(e.get().lower()))
         enter_button.place(x=760, y=130, width=90, height=50)
         
-        return_button = Button(self, text="Return to main", font=TITLE_FONT, command=lambda: controller.show_frame(MenuScreen))
+        return_button = Button(self, text="Return to main", command=lambda: controller.show_frame(MenuScreen))
         return_button.place(x=525, y=230, width=150, height=30)
         
     def add_company(self, name):
@@ -186,6 +186,7 @@ class DisplayScreen(Frame):
     
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
+        self.configure(bg="white")
             
         db = DB()
                 
@@ -309,7 +310,7 @@ class DisplayScreen(Frame):
         for i in range(len(self.data)):
             for j in range(len(self.data[0])):
                 if "Header" not in self.data[i][j]:
-                    label = Label(self, text=self.data[i][j], font=TABLE_FONT)
+                    label = Label(self, text=self.data[i][j], font=TABLE_FONT, bg="white")
                     if j == 0:
                         label.place(x=j*300+270, y=i*16+105)
                     else:
