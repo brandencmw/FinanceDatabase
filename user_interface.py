@@ -1,23 +1,18 @@
 """
 ------------------------------------------------------------------------
-[program description]
-------------------------------------------------------------------------
 Author: Branden Wheeler
-ID:     190197360
-Email:  whee7360@mylaurier.ca
-__updated__ = "2019-09-27"
+__updated__ = "2019-11-21"
 ------------------------------------------------------------------------
 """
+#Imports
 from tkinter import *
 from tkinter import messagebox
 from finance_scraper import AddCompany
 from sql_implementation import DB
 import os
 import csv
-#a73737
-#7a2828
 
-
+#Constants
 TITLE_FONT = ("Bookman Old Style", 40, "bold")
 DISPLAY_FONT = ("Bookman Old Style", 24, "bold")
 TABLE_FONT = ("Times New Roman", 9)
@@ -109,8 +104,8 @@ class AddScreen(Frame):
         title = Label(self, text="Add Company", font=TITLE_FONT, bg="white")
         title.place(x=600, y=50, anchor="center")
             
-        description = Label(self, text="Enter the stock symbol of the company to be added", bg="white")
-        description.place(x=355, y=110)
+        description = Label(self, text="Enter the stock symbol of the company to be added", font="24", bg="white")
+        description.place(x=355, y=100)
         
         e = Entry(self, font=TITLE_FONT, highlightcolor="blue", highlightthickness=2)
         e.place(x=355, y=130, width=400, height=50)
@@ -125,24 +120,24 @@ class AddScreen(Frame):
         
         db = DB()
         answer = True;
-        if db.tableExists(name):
+        if db.table_exists(name):
             answer = messagebox.askyesno("Already Exists", "A table with this name already exists. Would you like to overwrite?")
             if answer:
-                db.deleteTable(name)
+                db.delete_table(name)
         
         if answer:
             adder = AddCompany(name.upper())
             try:
                 adder.use()
-                db.createTable(name)
-                db.addRow(name, 'Income Headers', adder.income_data[0][0], adder.income_data[0][1], adder.income_data[0][2], 'Income')
-                db.addRows(name, adder.income_data[1:], "Income")
+                db.create_table(name)
+                db.add_row(name, 'Income Headers', adder.income_data[0][0], adder.income_data[0][1], adder.income_data[0][2], 'Income')
+                db.add_rows(name, adder.income_data[1:], "Income")
                 
-                db.addRow(name, 'Balance Headers', adder.balance_data[0][0], adder.balance_data[0][1], adder.balance_data[0][2], 'Balance')
-                db.addRows(name, adder.balance_data[1:], "Balance")
+                db.add_row(name, 'Balance Headers', adder.balance_data[0][0], adder.balance_data[0][1], adder.balance_data[0][2], 'Balance')
+                db.add_rows(name, adder.balance_data[1:], "Balance")
                 
-                db.addRow(name, 'Cash Headers', adder.cash_data[0][0], adder.cash_data[0][1], adder.cash_data[0][2], 'Cash')
-                db.addRows(name, adder.cash_data[1:], "Cash")
+                db.add_row(name, 'Cash Headers', adder.cash_data[0][0], adder.cash_data[0][1], adder.cash_data[0][2], 'Cash')
+                db.add_rows(name, adder.cash_data[1:], "Cash")
                 
             except Exception as e:
                 print(e)
@@ -162,8 +157,8 @@ class DeleteScreen(Frame):
         title = Label(self, text="Delete Company", font=TITLE_FONT, bg="white")
         title.place(x=600, y=50, anchor="center")
             
-        description = Label(self, text="Enter the stock symbol of the company to be deleted", bg="white")
-        description.place(x=355, y=110)
+        description = Label(self, text="Enter the stock symbol of the company to be deleted", font="24", bg="white")
+        description.place(x=355, y=100)
         
         e = Entry(self, font=TITLE_FONT, highlightcolor="blue", highlightthickness=2)
         e.place(x=355, y=130, width=400, height=50)
@@ -177,10 +172,10 @@ class DeleteScreen(Frame):
         
     def delete_company(self, name, db):  
         
-        if not db.tableExists(name):
+        if not db.table_exists(name):
             messagebox.showinfo("Not Found", "This table could not be found. Perhaps it was already deleted")
         else:   
-            db.deleteTable(name)
+            db.delete_table(name)
         
 class DisplayScreen(Frame):
     

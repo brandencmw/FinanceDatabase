@@ -1,15 +1,7 @@
 """
 ------------------------------------------------------------------------
-This program will allow a user to enter a company's name or symbol. It will then search Yahoo
-Finance for the provided name and symbol and use web scraping to extract data about the company.
-The information will then be saved into an Excel spreadsheet
-
-Selenium is being used to automate the rich browser tasks such as using the search bar
-Beautiful Soup is being used for web scraping and collecting relevant data
-Pandas is being used to move the data into a spreadsheet format
-------------------------------------------------------------------------
 Author: Branden Wheeler
-__updated__ = "2020-09-09"
+__updated__ = "2020-11-21"
 ------------------------------------------------------------------------
 """
 #Imports

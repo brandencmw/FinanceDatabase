@@ -39,6 +39,7 @@ class DB:
             user=user_line,
             password=password_line,
             database=database_line)
+        
     """
     table_exists Method
     Description: Checks to see if a table with a given name exists
@@ -136,7 +137,7 @@ class DB:
         name (String) - Contains the table name that is to be removed
     """
     def delete_table(self, name):
-        
+        print("HELLO")
         dbcur = self.db.cursor()
         dbcur.execute("DROP TABLE " + name) #Executes SQL query
         dbcur.close()
